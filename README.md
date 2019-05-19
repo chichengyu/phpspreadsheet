@@ -1,5 +1,5 @@
 # phpspreadsheet
-一个thinkphp5的phpspreadsheet封装包，方便使用  
+一个phpspreadsheet封装包，方便Excel数据的导入导出使用  
 
 
 # 基本使用
