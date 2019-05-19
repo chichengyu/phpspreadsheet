@@ -1,5 +1,5 @@
 # phpspreadsheet
-一个phpspreadsheet封装包，方便Excel数据的导入导出使用，我这里安装是的 "phpoffice/phpspreadsheet": "^1.6"  
+一个phpspreadsheet封装包，方便Excel数据的导入导出使用，我这里安装是的 ```"phpoffice/phpspreadsheet": "^1.6"```  
 
 
 # 基本使用
