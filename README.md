@@ -3,7 +3,7 @@
 
 
 # 基本使用
-使用之前必须先安装 == Spreadsheet ==，然后才能使用
+使用之前必须先安装 ==Spreadsheet==，然后才能使用
 ```
 composer require phpoffice/phpspreadsheet
 ```
