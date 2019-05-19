@@ -3,11 +3,15 @@
 
 
 # 基本使用
-使用之前必须先安装 ```Spreadsheet```，然后才能使用
+使用之前必须先安装 ```Spreadsheet```，使用 composer 安装
 ```
 composer require phpoffice/phpspreadsheet
 ```
-安装之后，在需要使用的类中use引入
+然后再安装本包
+```
+composer require think/phpspreadsheet
+```
+安装之后，即可在需要使用的类中use引入
 ```
 use think\Excel;
 ```
