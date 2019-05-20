@@ -34,6 +34,6 @@ Excel::excelPut($Excel,$tableData);
 ```
 $path = './static/test.xlsx';
 // header('content-Type:text/html;charset=utf-8');
-$inputFileType  = Excel::excelReader($path);
+$data  = Excel::excelReader($path);// 返回拿到的数据
 ```
 在thinkphp5里基本使用就是以上如此了，封装这个只为方便使用
