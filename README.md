@@ -16,7 +16,8 @@ composer require think/phpspreadsheet
 use think\Excel;
 ```
 然后调用方法：excelReader（从Excel导入数据）、excelPut（导出数据为Excel），注意都是静态方法静态调用  
-导出数据道Excel
+导出数据道Excel，有两种模式：
+一：直接下载
 ```
 $Excel['fileName']="ThinkPHP导出spreadsheet示例-".date('Y年m月d日-His',time());//or $xlsTitle
 $Excel['cellName']=['A','B','C','D'];// excel 列
@@ -29,6 +30,11 @@ $tableData = [
   ['id'=>2,'name'=>'李四','age'=>20,'age'=>'女'],
 ];
 Excel::excelPut($Excel,$tableData);
+```
+二：在服务端生成Excel
+```
+$path = './static/excel/$Excel['fileName'].xlsx';
+Excel::excelPut($Excel,$tableData,$path);
 ```
 从Excel导入数据，首先需要拿到你上传到服务器的Excel文件的正确路径，如：我这是  $path = './static/test.xlsx'
 ```
