@@ -9,9 +9,10 @@ use PhpOffice\PhpSpreadsheet\Style\Fill as PHPExcel_Style_Fill;
 use PhpOffice\PhpSpreadsheet\Style\Border as Border;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
+
 class Excel {
 
-	/*
+	/**
 	 * 导入数据
 	 * @params String $path 上传的Excel文件路径(相对路径)
 	 * @return Array 二维数组 
@@ -25,11 +26,14 @@ class Excel {
 		return $sheetdata; // --- 直接返回数组数据
 	}
 
-	/*
-	 *	导出数据
-	 *
-	*/
-	public static function excelPut($Excel,$expTableData){
+    /** 导出数据
+     * @param $Excel（二维数组）
+     * @param $expTableData 导出的数据 （二维数组）
+     * @param string $path 若路径存在就是要在服务端生成excel在下载，若路径不存在就是直接下载
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+	public static function excelPut($Excel,$expTableData,$path=''){
 		// $Excel['sheetTitle']=iconv('utf-8', 'gb2312',$Excel['sheetTitle']);
         //  ------------- 文件参数 -------------
         $cellName = $Excel['cellName'];
@@ -107,12 +111,17 @@ class Excel {
         //$sheet0->setCellValue("A".($dataNum+10)," ");//多设置一些行
 
         // ------------- 输出 -------------
-        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');//告诉浏览器输出07Excel文件
-        //header('Content-Type:application/vnd.ms-excel');//告诉浏览器将要输出Excel03版本文件
-        header("Content-Disposition: attachment;filename=".$Excel['fileName'].".xlsx");//告诉浏览器输出浏览器名称
-        header('Cache-Control: max-age=0');//禁止缓存
         $writer = new Xlsx($spreadsheet);
-        $writer->save('php://output');
-        exit;
+        if (empty($path)){
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');//告诉浏览器输出07Excel文件
+            //header('Content-Type:application/vnd.ms-excel');//告诉浏览器将要输出Excel03版本文件
+            header("Content-Disposition: attachment;filename=".$Excel['fileName'].".xlsx");//告诉浏览器输出浏览器名称
+            header('Cache-Control: max-age=0');//禁止缓存
+            $writer->save('php://output');
+            exit;
+        }else{
+            $writer->save($path);
+        }
 	}
+
 }
