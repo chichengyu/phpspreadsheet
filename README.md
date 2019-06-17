@@ -16,7 +16,7 @@ composer require think/phpspreadsheet
 use think\Excel;
 ```
 然后调用方法：excelReader（从Excel导入数据）、excelPut（导出数据为Excel），注意都是静态方法静态调用  
-导出数据道Excel，有两种模式：
+导出数据道Excel，有两种模式：  
 一：直接下载
 ```
 $Excel['fileName']="ThinkPHP导出spreadsheet示例-".date('Y年m月d日-His',time());//or $xlsTitle
